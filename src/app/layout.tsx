@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "DokumenAI — Dokumen Jadi Data",
-  description: "Upload dokumen bisnis Indonesia, dapat data terstruktur dalam hitungan detik. Gratis, privat, open-source.",
+  description: "Upload dokumen bisnis Indonesia, dapat data terstruktur dalam hitungan detik. Self-hosted, transparan, open-source.",
 };
 
 function Navbar() {

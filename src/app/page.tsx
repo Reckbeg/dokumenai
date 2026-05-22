@@ -244,8 +244,8 @@ export default function Home() {
       <div className="mt-16 grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
         <div className="text-center">
           <div className="text-3xl mb-2">🔒</div>
-          <h3 className="font-medium mb-1">Privasi Terjaga</h3>
-          <p className="text-sm text-gray-500">Data diproses di server Anda, tidak dikirim ke pihak ketiga</p>
+          <h3 className="font-medium mb-1">Self-hosted & Transparan</h3>
+          <p className="text-sm text-gray-500">Data disimpan di server Anda; pemrosesan AI mengikuti provider LLM yang dikonfigurasi</p>
         </div>
         <div className="text-center">
           <div className="text-3xl mb-2">⚡</div>

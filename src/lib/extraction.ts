@@ -1,5 +1,6 @@
 
 import { getTemplate, type Template } from './templates';
+import { PDFParse } from 'pdf-parse';
 
 const LLM_BASE_URL = process.env.LLM_BASE_URL || 'http://localhost:4000/v1';
 const LLM_API_KEY = process.env.LLM_API_KEY || '';
@@ -72,30 +73,20 @@ async function ocrDocument(fileBuffer: Buffer, fileType: string): Promise<string
   }
 
   if (isPdf) {
-    // For PDFs, try to extract text directly first
-    // Fallback: convert first page to image and OCR
-    const base64 = fileBuffer.toString('base64');
-    
-    const response = await fetch(`${LLM_BASE_URL}/chat/completions`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${LLM_API_KEY}`,
-      },
-      body: JSON.stringify({
-        model: LLM_MODEL,
-        messages: [
-          {
-            role: 'user',
-            content: `Read and extract ALL text from this PDF document. Include every detail: names, numbers, dates, addresses, items, amounts. Preserve the structure. Output only the extracted text.\n\n[PDF content encoded in base64 - first 10000 chars]\n${base64.substring(0, 10000)}`,
-          },
-        ],
-        max_tokens: 4000,
-      }),
-    });
+    const parser = new PDFParse({ data: fileBuffer });
 
-    const result = await response.json() as any;
-    return result.choices?.[0]?.message?.content || '';
+    try {
+      const result = await parser.getText();
+      const text = result.text.trim();
+
+      if (!text) {
+        throw new Error('PDF tidak memiliki teks yang bisa dibaca. Untuk PDF hasil scan, upload halaman sebagai gambar JPG/PNG dulu.');
+      }
+
+      return text;
+    } finally {
+      await parser.destroy();
+    }
   }
 
   throw new Error('Unsupported file type. Please upload an image (JPG, PNG) or PDF.');

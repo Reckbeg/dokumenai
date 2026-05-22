@@ -79,13 +79,24 @@ export default function ResultPage({ params }: { params: Promise<{ id: string }>
   };
 
   const handleExportXLSX = async () => {
-    const XLSX = await import('xlsx');
-    const entries = Object.entries(editedData).filter(([k]) => !k.startsWith('_'));
-    const wsData = [['Field', 'Value'], ...entries.map(([k, v]) => [k, v])];
-    const ws = XLSX.utils.aoa_to_sheet(wsData);
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Data');
-    XLSX.writeFile(wb, `dokumenai_${data?.template_id}_${new Date().toISOString().slice(0, 10)}.xlsx`);
+    const res = await fetch('/api/export', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ templateId: data?.template_id, data: editedData }),
+    });
+
+    if (!res.ok) {
+      alert('Gagal membuat file XLSX');
+      return;
+    }
+
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `dokumenai_${data?.template_id}_${new Date().toISOString().slice(0, 10)}.xlsx`;
+    a.click();
+    URL.revokeObjectURL(url);
   };
 
   const handleCopyJSON = () => {
