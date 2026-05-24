@@ -3,6 +3,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { getTemplateDisplay } from '@/lib/template-labels';
+import { apiFetch } from '@/lib/api-client';
 
 interface Extraction {
   id: string;
@@ -12,22 +14,17 @@ interface Extraction {
   created_at: string;
 }
 
-const TEMPLATE_LABELS: Record<string, { name: string; icon: string }> = {
-  invoice: { name: 'Invoice', icon: '🧾' },
-  receipt: { name: 'Struk / Bon', icon: '🧾' },
-  faktur_pajak: { name: 'Faktur Pajak', icon: '🏛️' },
-  transfer_proof: { name: 'Bukti Transfer', icon: '🏦' },
-  purchase_order: { name: 'PO', icon: '📦' },
-  custom: { name: 'Lainnya', icon: '📄' },
-};
-
 export default function HistoryPage() {
   const [extractions, setExtractions] = useState<Extraction[]>([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(0);
+  const pageSize = 20;
 
-  useEffect(() => {
-    fetch('/api/history')
+  const fetchData = (p: number) => {
+    setLoading(true);
+    const offset = p * pageSize;
+    apiFetch(`/api/history?limit=${pageSize}&offset=${offset}`)
       .then(r => r.json())
       .then(d => {
         setExtractions(d.extractions || []);
@@ -35,7 +32,11 @@ export default function HistoryPage() {
         setLoading(false);
       })
       .catch(() => setLoading(false));
-  }, []);
+  };
+
+  useEffect(() => {
+    fetchData(page);
+  }, [page]);
 
   if (loading) {
     return (
@@ -67,35 +68,60 @@ export default function HistoryPage() {
           </Link>
         </div>
       ) : (
-        <div className="space-y-2">
-          {extractions.map((ext) => {
-            const template = TEMPLATE_LABELS[ext.template_id] || { name: ext.template_id, icon: '📄' };
-            const confidenceColor = ext.confidence >= 70 ? 'text-emerald-400' : ext.confidence >= 40 ? 'text-yellow-400' : 'text-red-400';
-            
-            return (
-              <Link
-                key={ext.id}
-                href={`/result/${ext.id}`}
-                className="card p-4 flex items-center gap-4 hover:border-blue-500/30 hover:bg-blue-500/5 transition-all block"
+        <>
+          <div className="space-y-2">
+            {extractions.map((ext) => {
+              const template = getTemplateDisplay(ext.template_id);
+              const confidenceColor = ext.confidence >= 70 ? 'text-emerald-400' : ext.confidence >= 40 ? 'text-yellow-400' : 'text-red-400';
+              
+              return (
+                <Link
+                  key={ext.id}
+                  href={`/result/${ext.id}`}
+                  className="card p-4 flex items-center gap-4 hover:border-blue-500/30 hover:bg-blue-500/5 transition-all block"
+                >
+                  <span className="text-2xl">{template.icon}</span>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-medium text-sm truncate">{ext.file_name}</p>
+                    <p className="text-xs text-gray-500">{template.name}</p>
+                  </div>
+                  <div className="text-right">
+                    <span className={`text-sm font-medium ${confidenceColor}`}>
+                      {ext.confidence}%
+                    </span>
+                    <p className="text-xs text-gray-600">
+                      {new Date(ext.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })}
+                    </p>
+                  </div>
+                  <span className="text-gray-600">→</span>
+                </Link>
+              );
+            })}
+          </div>
+
+          {/* Pagination */}
+          {total > pageSize && (
+            <div className="flex items-center justify-between mt-6 pt-4 border-t border-white/10">
+              <button
+                onClick={() => setPage(p => Math.max(0, p - 1))}
+                disabled={page === 0}
+                className="btn-secondary text-sm disabled:opacity-30 disabled:cursor-not-allowed"
               >
-                <span className="text-2xl">{template.icon}</span>
-                <div className="flex-1 min-w-0">
-                  <p className="font-medium text-sm truncate">{ext.file_name}</p>
-                  <p className="text-xs text-gray-500">{template.name}</p>
-                </div>
-                <div className="text-right">
-                  <span className={`text-sm font-medium ${confidenceColor}`}>
-                    {ext.confidence}%
-                  </span>
-                  <p className="text-xs text-gray-600">
-                    {new Date(ext.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })}
-                  </p>
-                </div>
-                <span className="text-gray-600">→</span>
-              </Link>
-            );
-          })}
-        </div>
+                ← Sebelumnya
+              </button>
+              <span className="text-sm text-gray-500">
+                Halaman {page + 1} dari {Math.ceil(total / pageSize)} ({total} total)
+              </span>
+              <button
+                onClick={() => setPage(p => p + 1)}
+                disabled={(page + 1) * pageSize >= total}
+                className="btn-secondary text-sm disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                Selanjutnya →
+              </button>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

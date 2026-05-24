@@ -3,6 +3,7 @@
 
 import { useState, useCallback, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import { apiFetch } from '@/lib/api-client';
 
 interface Template {
   id: string;
@@ -20,6 +21,9 @@ const TEMPLATES: Template[] = [
   { id: 'purchase_order', name: 'Purchase Order', nameId: 'Purchase Order (PO)', descriptionId: 'Dokumen pesanan pembelian', icon: '📦' },
   { id: 'custom', name: 'Custom', nameId: 'Dokumen Lainnya', descriptionId: 'Jenis dokumen lainnya', icon: '📄' },
 ];
+
+// Re-export for consumers that only need display info
+export { TEMPLATE_LABELS } from '@/lib/template-labels';
 
 export default function Home() {
   const router = useRouter();
@@ -70,7 +74,7 @@ export default function Home() {
       formData.append('file', file);
       formData.append('templateId', selectedTemplate);
 
-      const res = await fetch('/api/extract', {
+      const res = await apiFetch('/api/extract', {
         method: 'POST',
         body: formData,
       });

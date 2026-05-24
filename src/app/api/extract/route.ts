@@ -47,8 +47,8 @@ export async function POST(request: NextRequest) {
       templateId,
       fileName: file.name,
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error('Extraction error:', error);
-    return NextResponse.json({ error: error.message || 'Terjadi kesalahan saat memproses dokumen' }, { status: 500 });
+    return NextResponse.json({ error: 'Terjadi kesalahan saat memproses dokumen' }, { status: 500 });
   }
 }

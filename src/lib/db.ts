@@ -27,6 +27,8 @@ export function getDb(): Database.Database {
         created_at TEXT DEFAULT (datetime('now')),
         updated_at TEXT DEFAULT (datetime('now'))
       );
+      CREATE INDEX IF NOT EXISTS idx_extractions_created_at ON extractions(created_at DESC);
+      CREATE INDEX IF NOT EXISTS idx_extractions_template_id ON extractions(template_id);
       CREATE TABLE IF NOT EXISTS templates (
         id TEXT PRIMARY KEY,
         name TEXT NOT NULL,

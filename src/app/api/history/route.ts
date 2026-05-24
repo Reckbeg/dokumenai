@@ -5,8 +5,10 @@ import { getDb } from '@/lib/db';
 export async function GET(request: NextRequest) {
   try {
     const db = getDb();
-    const limit = parseInt(request.nextUrl.searchParams.get('limit') || '50');
-    const offset = parseInt(request.nextUrl.searchParams.get('offset') || '0');
+    const rawLimit = parseInt(request.nextUrl.searchParams.get('limit') || '50', 10);
+    const rawOffset = parseInt(request.nextUrl.searchParams.get('offset') || '0', 10);
+    const limit = Number.isNaN(rawLimit) || rawLimit < 1 ? 50 : Math.min(rawLimit, 200);
+    const offset = Number.isNaN(rawOffset) || rawOffset < 0 ? 0 : rawOffset;
 
     const extractions = db.prepare(`
       SELECT id, template_id, file_name, confidence, created_at
@@ -15,11 +17,11 @@ export async function GET(request: NextRequest) {
       LIMIT ? OFFSET ?
     `).all(limit, offset);
 
-    const total = db.prepare('SELECT COUNT(*) as count FROM extractions').get() as any;
+    const total = db.prepare('SELECT COUNT(*) as count FROM extractions').get() as { count: number };
 
     return NextResponse.json({ extractions, total: total.count });
-  } catch (error: any) {
+  } catch (error) {
     console.error('History error:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: 'Gagal memuat riwayat' }, { status: 500 });
   }
 }

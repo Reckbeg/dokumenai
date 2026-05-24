@@ -16,7 +16,8 @@ export async function GET(
     }
 
     return NextResponse.json(extraction);
-  } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  } catch (error) {
+    console.error('Extraction detail error:', error);
+    return NextResponse.json({ error: 'Gagal memuat data' }, { status: 500 });
   }
 }

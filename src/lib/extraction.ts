@@ -68,7 +68,7 @@ async function ocrDocument(fileBuffer: Buffer, fileType: string): Promise<string
       }),
     });
 
-    const result = await response.json() as any;
+    const result = await response.json() as { choices?: Array<{ message?: { content?: string } }> };
     return result.choices?.[0]?.message?.content || '';
   }
 
@@ -132,7 +132,7 @@ Output HANYA JSON, tanpa penjelasan:`;
     }),
   });
 
-  const result = await response.json() as any;
+  const result = await response.json() as { choices?: Array<{ message?: { content?: string } }> };
   const content = result.choices?.[0]?.message?.content || '{}';
   
   // Parse JSON from response (handle markdown code blocks)

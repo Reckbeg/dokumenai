@@ -3,6 +3,8 @@
 
 import { useState, useEffect, use } from 'react';
 import Link from 'next/link';
+import { getTemplateDisplay } from '@/lib/template-labels';
+import { apiFetch } from '@/lib/api-client';
 
 interface ExtractionData {
   id: string;
@@ -13,15 +15,6 @@ interface ExtractionData {
   confidence: number;
   created_at: string;
 }
-
-const TEMPLATE_LABELS: Record<string, { name: string; icon: string }> = {
-  invoice: { name: 'Faktur / Invoice', icon: '🧾' },
-  receipt: { name: 'Struk / Bon', icon: '🧾' },
-  faktur_pajak: { name: 'Faktur Pajak', icon: '🏛️' },
-  transfer_proof: { name: 'Bukti Transfer', icon: '🏦' },
-  purchase_order: { name: 'Purchase Order', icon: '📦' },
-  custom: { name: 'Dokumen Lainnya', icon: '📄' },
-};
 
 function formatCurrency(value: any): string {
   if (value == null || value === '') return '-';
@@ -52,7 +45,7 @@ export default function ResultPage({ params }: { params: Promise<{ id: string }>
   const [showRaw, setShowRaw] = useState(false);
 
   useEffect(() => {
-    fetch(`/api/history/${id}`)
+    apiFetch(`/api/history/${id}`)
       .then(r => r.json())
       .then(d => {
         if (d.error) throw new Error(d.error);
@@ -79,7 +72,7 @@ export default function ResultPage({ params }: { params: Promise<{ id: string }>
   };
 
   const handleExportXLSX = async () => {
-    const res = await fetch('/api/export', {
+    const res = await apiFetch('/api/export', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ templateId: data?.template_id, data: editedData }),
@@ -108,7 +101,7 @@ export default function ResultPage({ params }: { params: Promise<{ id: string }>
 
   const handleDelete = async () => {
     if (!confirm('Hapus data ekstraksi ini?')) return;
-    await fetch(`/api/history/${id}/delete`, { method: 'DELETE' });
+    await apiFetch(`/api/history/${id}/delete`, { method: 'DELETE' });
     window.location.href = '/history';
   };
 
@@ -131,7 +124,7 @@ export default function ResultPage({ params }: { params: Promise<{ id: string }>
     );
   }
 
-  const templateInfo = TEMPLATE_LABELS[data.template_id] || { name: data.template_id, icon: '📄' };
+  const templateInfo = getTemplateDisplay(data.template_id);
   const confidenceColor = data.confidence >= 70 ? 'confidence-high' : data.confidence >= 40 ? 'confidence-medium' : 'confidence-low';
   const confidenceLabel = data.confidence >= 70 ? 'Tinggi' : data.confidence >= 40 ? 'Sedang' : 'Rendah';
   const entries = Object.entries(editedData).filter(([k]) => !k.startsWith('_'));
