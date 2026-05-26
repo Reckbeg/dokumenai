@@ -7,8 +7,8 @@ import Link from "next/link";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "DokumenAI — Dokumen Jadi Data",
-  description: "Upload dokumen bisnis Indonesia, dapat data terstruktur dalam hitungan detik. Self-hosted, transparan, open-source.",
+  title: "DokumenAI — Ekstrak Data dari Dokumen Bisnis Otomatis",
+  description: "Upload foto/PDF invoice, faktur pajak, atau bukti transfer. AI baca dan keluarkan data terstruktur dalam detik. Self-hosted, gratis, open source.",
 };
 
 function Navbar() {
@@ -48,7 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <footer className="border-t border-white/10 py-6 text-center text-sm text-gray-500">
-          <p>DokumenAI — Open Source &bull; Privasi Terjaga &bull; Dibuat untuk UMKM Indonesia 🇮🇩</p>
+          <p>DokumenAI — Open Source &bull; Data Tetap Milik Anda &bull; Untuk UMKM Indonesia 🇮🇩</p>
         </footer>
       </body>
     </html>
