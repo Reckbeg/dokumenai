@@ -182,7 +182,7 @@ export default function Home() {
                     if (f) handleFile(f);
                   }}
                 />
-                <div className="text-4xl mb-3">📁</div>
+                <div className="text-4xl mb-3">📄</div>
                 <p className="font-medium mb-1">Letakkan file di sini atau klik untuk unggah</p>
                 <p className="text-sm text-gray-500">JPG, PNG, WebP, atau PDF &bull; Maks 10MB</p>
               </div>
@@ -236,8 +236,8 @@ export default function Home() {
 
           {isProcessing && (
             <div className="card p-6 mt-4 text-center animate-pulse-glow">
-              <div className="text-3xl mb-3">🤖</div>
-              <p className="font-medium">AI sedang membaca dokumen Anda...</p>
+              <div className="text-3xl mb-3">⏳</div>
+              <p className="font-medium text-white">AI sedang membaca dokumen Anda...</p>
               <p className="text-sm text-gray-500 mt-1">Biasanya 5-15 detik tergantung ukuran dokumen</p>
             </div>
           )}
@@ -248,71 +248,71 @@ export default function Home() {
       <div className="mt-16 grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
         <div className="text-center">
           <div className="text-3xl mb-2">🔒</div>
-          <h3 className="font-medium mb-1">Data Sepenuhnya Milik Anda</h3>
-          <p className="text-sm text-gray-500">Host sendiri di server Anda. Tidak ada data yang bocor ke pihak ketiga.</p>
+          <h3 className="font-medium mb-1 text-white">Data tetap di server Anda</h3>
+          <p className="text-sm text-gray-500">Self-hosted. Nggak ada data yang bocor ke pihak ketiga.</p>
         </div>
         <div className="text-center">
           <div className="text-3xl mb-2">⚡</div>
-          <h3 className="font-medium mb-1">Ekstrak dalam Hitungan Detik</h3>
+          <h3 className="font-medium mb-1 text-white">Ekstrak dalam hitungan detik</h3>
           <p className="text-sm text-gray-500">Cukup upload, AI langsung bekerja. Hasilnya bisa disalin atau diunduh.</p>
         </div>
         <div className="text-center">
           <div className="text-3xl mb-2">🇮🇩</div>
-          <h3 className="font-medium mb-1">Paham Dokumen Lokal</h3>
-          <p className="text-sm text-gray-500">Faktur Pajak, Bukti Transfer, Struk — semua format Indonesia dikenali akurat.</p>
+          <h3 className="font-medium mb-1 text-white">Paham dokumen lokal</h3>
+          <p className="text-sm text-gray-500">Faktur Pajak, Bukti Transfer, Struk — semua format Indonesia dikenali.</p>
         </div>
       </div>
 
       {/* Cara Kerja */}
       <section className="mt-20 max-w-5xl mx-auto">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-3 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-3 text-white">
           Cara Kerja: 3 Langkah Sederhana
         </h2>
         <p className="text-center text-gray-400 mb-8">3 langkah, kurang dari 30 detik</p>
         <div className="grid md:grid-cols-3 gap-4">
-          <div className="card p-6 text-center bg-white/5">
-            <div className="text-3xl mb-3">1️⃣</div>
-            <h3 className="font-medium mb-1">Pilih Jenis Dokumen</h3>
-            <p className="text-sm text-gray-500">Tentukan apakah ini invoice, faktur pajak, bukti transfer, atau lainnya.</p>
+          <div className="card p-6 text-center">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold mb-3">1</span>
+            <h3 className="font-medium mb-1 text-white">Pilih Jenis Dokumen</h3>
+            <p className="text-sm text-gray-500">Invoice, faktur pajak, bukti transfer — pilih yang sesuai.</p>
           </div>
-          <div className="card p-6 text-center bg-white/5">
-            <div className="text-3xl mb-3">2️⃣</div>
-            <h3 className="font-medium mb-1">Upload File</h3>
-            <p className="text-sm text-gray-500">Foto atau PDF dari dokumen Anda — cukup drag & drop atau klik.</p>
+          <div className="card p-6 text-center">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold mb-3">2</span>
+            <h3 className="font-medium mb-1 text-white">Upload File</h3>
+            <p className="text-sm text-gray-500">Foto atau PDF dari dokumen Anda. Drag & drop atau klik.</p>
           </div>
-          <div className="card p-6 text-center bg-white/5">
-            <div className="text-3xl mb-3">3️⃣</div>
-            <h3 className="font-medium mb-1">Dapatkan Data</h3>
-            <p className="text-sm text-gray-500">AI ekstrak dan tampilkan data terstruktur. Siap salin atau unduh CSV/XLSX/JSON.</p>
+          <div className="card p-6 text-center">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-blue-500/20 text-blue-400 text-sm font-bold mb-3">3</span>
+            <h3 className="font-medium mb-1 text-white">Dapatkan Data</h3>
+            <p className="text-sm text-gray-500">AI ekstrak datanya. Siap salin atau unduh CSV/XLSX/JSON.</p>
           </div>
         </div>
       </section>
 
       {/* Untuk Siapa */}
       <section className="mt-16 max-w-5xl mx-auto">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-3 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-3 text-white">
           Siapa yang Cocok Pakai DokumenAI?
         </h2>
-        <p className="text-center text-gray-400 mb-8">Dibuat untuk operasional bisnis harian di Indonesia</p>
+        <p className="text-center text-gray-400 mb-8">Dibuat untuk operasional bisnis sehari-hari</p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="card p-5 bg-white/5">
+          <div className="card p-5 border-blue-500/20">
             <div className="text-2xl mb-2">🏪</div>
-            <h3 className="font-medium">UMKM & Pebisnis</h3>
+            <h3 className="font-medium text-white">UMKM & Pebisnis</h3>
             <p className="text-sm text-gray-500 mt-1">Catat pemasukan dan pengeluaran tanpa ketik ulang.</p>
           </div>
-          <div className="card p-5 bg-white/5">
+          <div className="card p-5 border-blue-500/20">
             <div className="text-2xl mb-2">📊</div>
-            <h3 className="font-medium">Akuntan</h3>
+            <h3 className="font-medium text-white">Akuntan</h3>
             <p className="text-sm text-gray-500 mt-1">Ambil data invoice, PO, faktur pajak ke spreadsheet.</p>
           </div>
-          <div className="card p-5 bg-white/5">
+          <div className="card p-5 border-blue-500/20">
             <div className="text-2xl mb-2">📦</div>
-            <h3 className="font-medium">Admin Gudang</h3>
+            <h3 className="font-medium text-white">Admin Gudang</h3>
             <p className="text-sm text-gray-500 mt-1">Proses bon, surat jalan, dan PO lebih cepat.</p>
           </div>
-          <div className="card p-5 bg-white/5">
+          <div className="card p-5 border-blue-500/20">
             <div className="text-2xl mb-2">💼</div>
-            <h3 className="font-medium">Freelancer</h3>
+            <h3 className="font-medium text-white">Freelancer</h3>
             <p className="text-sm text-gray-500 mt-1">Urus bukti transfer dan invoice klien tanpa ribet.</p>
           </div>
         </div>
@@ -320,7 +320,7 @@ export default function Home() {
 
       {/* Format yang Didukung */}
       <section className="mt-16 max-w-4xl mx-auto">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-3 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-3 text-white">
           Format File yang Didukung
         </h2>
         <div className="card p-6 bg-white/5">
@@ -349,7 +349,7 @@ export default function Home() {
 
       {/* FAQ */}
       <section className="mt-16 max-w-4xl mx-auto">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-3 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-3 text-white">
           Pertanyaan Umum
         </h2>
         <div className="space-y-3">
@@ -375,7 +375,7 @@ export default function Home() {
       {/* Final CTA */}
       <section className="mt-20 mb-4 max-w-3xl mx-auto">
         <div className="card p-8 text-center bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border-blue-500/20">
-          <h2 className="text-2xl md:text-3xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+          <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">
             Mulai Ekstrak Tanpa Daftar
           </h2>
           <p className="text-gray-400">Upload dokumen pertama Anda. Gratis, nggak perlu daftar.</p>
