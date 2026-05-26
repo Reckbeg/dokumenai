@@ -108,7 +108,7 @@ export default function Home() {
           Dari Dokumen ke Data Siap Pakai
         </h1>
         <p className="text-gray-400 text-lg max-w-xl mx-auto">
-          Cukup upload foto/PDF — AI kami baca, ekstrak, dan keluarkan datanya dalam detik. Tanpa repot, tanpa ribet.
+          Cukup upload foto/PDF — AI kami baca, ekstrak, dan keluarkan datanya dalam hitungan detik.
           <br />
           <span className="text-sm">Gratis &bull; Data Tetap Privat &bull; Open Source</span>
         </p>
@@ -254,7 +254,7 @@ export default function Home() {
         <div className="text-center">
           <div className="text-3xl mb-2">⚡</div>
           <h3 className="font-medium mb-1">Ekstrak dalam Hitungan Detik</h3>
-          <p className="text-sm text-gray-500">Cukup upload, AI langsung bekerja. Hasilnya langsung bisa disalin atau diunduh.</p>
+          <p className="text-sm text-gray-500">Cukup upload, AI langsung bekerja. Hasilnya bisa disalin atau diunduh.</p>
         </div>
         <div className="text-center">
           <div className="text-3xl mb-2">🇮🇩</div>
@@ -268,7 +268,7 @@ export default function Home() {
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-3 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
           Cara Kerja: 3 Langkah Sederhana
         </h2>
-        <p className="text-center text-gray-400 mb-8">Dari dokumen ke data terstruktur dalam sekejap</p>
+        <p className="text-center text-gray-400 mb-8">3 langkah, kurang dari 30 detik</p>
         <div className="grid md:grid-cols-3 gap-4">
           <div className="card p-6 text-center bg-white/5">
             <div className="text-3xl mb-3">1️⃣</div>
@@ -303,7 +303,7 @@ export default function Home() {
           <div className="card p-5 bg-white/5">
             <div className="text-2xl mb-2">📊</div>
             <h3 className="font-medium">Akuntan</h3>
-            <p className="text-sm text-gray-500 mt-1">Ambil data invoice, PO, faktur pajak langsung ke spreadsheet.</p>
+            <p className="text-sm text-gray-500 mt-1">Ambil data invoice, PO, faktur pajak ke spreadsheet.</p>
           </div>
           <div className="card p-5 bg-white/5">
             <div className="text-2xl mb-2">📦</div>
@@ -367,7 +367,7 @@ export default function Home() {
           </div>
           <div className="card p-5 bg-white/5">
             <h3 className="font-medium">Format apa yang bisa diekspor?</h3>
-            <p className="text-sm text-gray-500 mt-1">Hasil ekstraksi bisa langsung diunduh sebagai CSV, XLSX, atau JSON — sesuai workflow Anda.</p>
+            <p className="text-sm text-gray-500 mt-1">Hasil ekstraksi bisa diunduh sebagai CSV, XLSX, atau JSON.</p>
           </div>
         </div>
       </section>
@@ -378,7 +378,7 @@ export default function Home() {
           <h2 className="text-2xl md:text-3xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
             Mulai Ekstrak Tanpa Daftar
           </h2>
-          <p className="text-gray-400">Upload dokumen pertama Anda — gratis, tanpa setup yang rumit.</p>
+          <p className="text-gray-400">Upload dokumen pertama Anda. Gratis, nggak perlu daftar.</p>
         </div>
       </section>
     </div>
