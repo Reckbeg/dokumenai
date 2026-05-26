@@ -262,6 +262,125 @@ export default function Home() {
           <p className="text-sm text-gray-500">Template khusus dokumen bisnis Indonesia</p>
         </div>
       </div>
+
+      {/* Cara Kerja */}
+      <section className="mt-20 max-w-5xl mx-auto">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-3 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+          Cara Kerja
+        </h2>
+        <p className="text-center text-gray-400 mb-8">Mulai dalam 3 langkah sederhana</p>
+        <div className="grid md:grid-cols-3 gap-4">
+          <div className="card p-6 text-center bg-white/5">
+            <div className="text-3xl mb-3">1️⃣</div>
+            <h3 className="font-medium mb-1">Pilih Template</h3>
+            <p className="text-sm text-gray-500">Pilih jenis dokumen sesuai kebutuhan bisnis Anda.</p>
+          </div>
+          <div className="card p-6 text-center bg-white/5">
+            <div className="text-3xl mb-3">2️⃣</div>
+            <h3 className="font-medium mb-1">Upload Dokumen</h3>
+            <p className="text-sm text-gray-500">Unggah JPG, PNG, WebP, atau PDF dari desktop maupun mobile.</p>
+          </div>
+          <div className="card p-6 text-center bg-white/5">
+            <div className="text-3xl mb-3">3️⃣</div>
+            <h3 className="font-medium mb-1">Ekstrak & Export</h3>
+            <p className="text-sm text-gray-500">AI mengekstrak data otomatis, lalu ekspor sesuai format kerja Anda.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Untuk Siapa */}
+      <section className="mt-16 max-w-5xl mx-auto">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-3 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+          Untuk Siapa?
+        </h2>
+        <p className="text-center text-gray-400 mb-8">Dibuat untuk operasional bisnis harian di Indonesia</p>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="card p-5 bg-white/5">
+            <div className="text-2xl mb-2">🏪</div>
+            <h3 className="font-medium">Pemilik UMKM</h3>
+            <p className="text-sm text-gray-500 mt-1">Rapikan dokumen penjualan dan pembelian tanpa input manual.</p>
+          </div>
+          <div className="card p-5 bg-white/5">
+            <div className="text-2xl mb-2">📊</div>
+            <h3 className="font-medium">Akuntan & Finance</h3>
+            <p className="text-sm text-gray-500 mt-1">Percepat rekonsiliasi, bookkeeping, dan pelaporan.</p>
+          </div>
+          <div className="card p-5 bg-white/5">
+            <div className="text-2xl mb-2">📦</div>
+            <h3 className="font-medium">Admin Gudang</h3>
+            <p className="text-sm text-gray-500 mt-1">Ambil data dari PO, invoice, dan bukti transaksi untuk stok.</p>
+          </div>
+          <div className="card p-5 bg-white/5">
+            <div className="text-2xl mb-2">💼</div>
+            <h3 className="font-medium">Freelancer</h3>
+            <p className="text-sm text-gray-500 mt-1">Kelola dokumen klien lebih cepat agar fokus ke pekerjaan utama.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Format yang Didukung */}
+      <section className="mt-16 max-w-4xl mx-auto">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-3 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+          Format yang Didukung
+        </h2>
+        <div className="card p-6 bg-white/5">
+          <div className="grid md:grid-cols-[1fr_auto_1fr] gap-4 items-center text-center">
+            <div>
+              <p className="text-sm text-gray-400 mb-2">Input</p>
+              <div className="flex flex-wrap justify-center gap-2 text-sm">
+                <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10">JPG</span>
+                <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10">PNG</span>
+                <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10">WebP</span>
+                <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10">PDF</span>
+              </div>
+            </div>
+            <div className="text-2xl text-blue-400">→</div>
+            <div>
+              <p className="text-sm text-gray-400 mb-2">Output</p>
+              <div className="flex flex-wrap justify-center gap-2 text-sm">
+                <span className="px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300">CSV</span>
+                <span className="px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300">XLSX</span>
+                <span className="px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300">JSON</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="mt-16 max-w-4xl mx-auto">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-3 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+          FAQ
+        </h2>
+        <div className="space-y-3">
+          <div className="card p-5 bg-white/5">
+            <h3 className="font-medium">Apakah DokumenAI gratis digunakan?</h3>
+            <p className="text-sm text-gray-500 mt-1">Ya, Anda bisa mulai gratis untuk kebutuhan ekstraksi dokumen harian.</p>
+          </div>
+          <div className="card p-5 bg-white/5">
+            <h3 className="font-medium">Apakah data dokumen saya aman?</h3>
+            <p className="text-sm text-gray-500 mt-1">Dokumen diproses di server Anda sendiri (self-hosted) dan tetap dalam kontrol Anda.</p>
+          </div>
+          <div className="card p-5 bg-white/5">
+            <h3 className="font-medium">Berapa lama proses ekstraksi?</h3>
+            <p className="text-sm text-gray-500 mt-1">Rata-rata 5–15 detik, tergantung ukuran file dan kompleksitas dokumen.</p>
+          </div>
+          <div className="card p-5 bg-white/5">
+            <h3 className="font-medium">Apakah hasil ekstraksi bisa diekspor?</h3>
+            <p className="text-sm text-gray-500 mt-1">Bisa. Hasil dapat diekspor ke CSV, XLSX, atau JSON untuk workflow Anda.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="mt-20 mb-4 max-w-3xl mx-auto">
+        <div className="card p-8 text-center bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border-blue-500/20">
+          <h2 className="text-2xl md:text-3xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            Coba sekarang — upload dokumen pertama Anda
+          </h2>
+          <p className="text-gray-400">Mulai gratis, tanpa setup yang rumit.</p>
+        </div>
+      </section>
     </div>
   );
 }
