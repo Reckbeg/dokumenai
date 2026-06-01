@@ -10,8 +10,10 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
     "better-sqlite3": "^12.10.0",
     "exceljs": "^4.4.0",
+    "geist": "^1.7.1",
     "next": "16.2.6",
     "pdf-parse": "^2.4.5",
     "react": "19.2.4",
